@@ -1,59 +1,119 @@
-# Client
+# TODO List Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+A full-stack TODO list application built with Angular frontend and .NET Web API backend.
 
-## Development server
+## 🛠️ Technologies Used
 
-To start a local development server, run:
+- **Frontend**: Angular 18
+- **Backend**: .NET 9.0 Web API
+- **Data Storage**: In-memory (no database required)
+- **Testing**: xUnit for backend, Angular testing utilities
 
-```bash
-ng serve
+## 🏗️ Architecture
+
+The application follows clean architecture principles:
+
+- **Controllers**: Handle HTTP requests and responses
+- **Services**: Business logic layer
+- **Repositories**: Data access layer (in-memory implementation)
+- **Models**: Data transfer objects
+
+## 📦 Project Structure
+
+```
+todo-list/
+├── client/                 # Angular frontend
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── components/
+│   │   │   ├── services/
+│   │   │   └── models/
+│   │   └── ...
+├── server/                 # .NET Web API backend
+│   ├── Controllers/
+│   ├── Services/
+│   ├── Repositories/
+│   ├── Models/
+│   └── ...
+└── README.md
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🚀 Getting Started
 
-## Code scaffolding
+### Prerequisites
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js (v18 or later)
+- .NET 9.0 SDK
+- Git
 
+### Installation & Running
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Nick-lizheng/todo-list.git
+   cd todo-list
+   ```
+
+2. **Start the Backend API**
+   ```bash
+   cd server
+   dotnet restore
+   dotnet run --urls "http://localhost:5180"
+   ```
+   The API will be available at `http://localhost:5180`
+
+3. **Start the Frontend (in a new terminal)**
+   ```bash
+   cd client
+   npm install
+   npm start
+   ```
+   The application will be available at `http://localhost:4200`
+
+## 🧪 Running Tests
+
+### Backend Tests
 ```bash
-ng generate component component-name
+cd server
+dotnet test
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+### Frontend Tests
 ```bash
-ng generate --help
+cd client
+npm test
 ```
 
-## Building
+## 📋 Features
 
-To build the project run:
+- ✅ View all TODO items
+- ✅ Add new TODO items
+- ✅ Delete TODO items
+- ✅ Responsive design
+- ✅ Clean, modern UI
+- ✅ RESTful API endpoints
+- ✅ Comprehensive testing
 
-```bash
-ng build
-```
+## 🔧 API Endpoints
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `GET /api/todos` - Get all TODO items
+- `POST /api/todos` - Create a new TODO item
+- `DELETE /api/todos/{id}` - Delete a TODO item
 
-## Running unit tests
+## 👨‍💻 Development
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+The application demonstrates:
+- Component-based architecture (Angular)
+- Dependency injection
+- Service layer pattern
+- Repository pattern
+- Unit testing
+- Clean code principles
+- TypeScript best practices
+- C# best practices
 
-```bash
-ng test
-```
+## 📝 Notes
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Data is stored in memory and will be reset when the server restarts
+- The frontend uses Angular's HttpClient with proxy configuration for API calls
+- CORS is configured to allow frontend-backend communication
